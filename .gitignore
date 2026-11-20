@@ -1,0 +1,45 @@
+# Whitelist: only the paper code, scripts and figure notebook are tracked.
+# Everything else in the working tree (data, checkpoints, W&B caches, logs, archive) stays local.
+/*
+!/.gitignore
+!/README.md
+!/pyproject.toml
+!/requirements.txt
+!/LICENSE
+!/scripts/
+!/notebooks/
+!/src/
+
+/src/*
+!/src/ugnn/
+!/src/sagnn/
+!/src/common/
+!/src/MIS/
+!/src/graph_signal_diffusion/
+
+/notebooks/*
+!/notebooks/paper_plots2.ipynb
+!/notebooks/paper_figs2/
+
+# KaMIS is cloned and built here by the user (see README)
+/src/MIS/external/
+
+# Python / Jupyter / editor
+__pycache__/
+*.py[cod]
+*.egg-info/
+.ipynb_checkpoints/
+.DS_Store
+.vscode/
+.idea/
+
+# Never track data, checkpoints, logs
+*.pt
+*.pth
+*.ckpt
+*.npz
+*.npy
+*.log
+wandb/
+artifacts/
+/notebooks/paper_figs2/_shape_options/

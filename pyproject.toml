@@ -1,0 +1,33 @@
+[build-system]
+requires = ["setuptools>=68", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "graph-diffusion-link-scheduling"
+version = "0.1.0"
+description = "Delta-conditioned graph diffusion (U-GNN) for long-horizon wireless link scheduling under minimum-rate constraints"
+readme = "README.md"
+requires-python = ">=3.10"
+dependencies = [
+    "torch>=2.4",
+    "torch-geometric>=2.5",
+    "numpy>=1.26",
+    "scipy>=1.10",
+    "networkx>=3.0",
+    "pandas>=2.0",
+    "matplotlib>=3.8",
+    "seaborn>=0.13",
+    "tqdm>=4.65",
+    "hydra-core>=1.3",
+    "omegaconf>=2.3",
+    "jaxtyping>=0.3",
+    "beartype>=0.22",
+    "wandb>=0.16",
+]
+
+[tool.setuptools.packages.find]
+where = ["src"]
+include = ["ugnn*", "sagnn*", "common*", "MIS*", "graph_signal_diffusion*"]
+
+[tool.setuptools.package-data]
+graph_signal_diffusion = ["conf/**/*.yaml"]
