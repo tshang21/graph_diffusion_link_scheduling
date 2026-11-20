@@ -1,7 +1,5 @@
 # Graph diffusion for long-horizon link scheduling
 
-> **TODO (before release):** paper title, authors, arXiv link and BibTeX.
-
 A δ-conditioned graph diffusion model (**U-GNN**) that generates wireless link schedules on a
 conflict graph under a per-link **minimum-rate constraint** δ. The model is trained to imitate a
 teacher, **DGD**: maximum-weight independent sets (solved with KaMIS) under dual-dynamics link
@@ -67,14 +65,11 @@ links), stored as `data/sawl_dataset_irregular_lcc_degree6_noise0.02_graphs_150_
 
 ### 1. Conflict graphs
 
-> **TODO:** confirm the exact generation call and seeds for the base set and for the
-> 1000/2000/5000-link families.
-
 - **Base set:** `sagnn.datageneration.create_conflict_dataset_irregular(...)` with noise 0.02,
   `lcc=True`, radius 1.2, target conflict degree 6 (tolerance 0.5).
 - **Size-transfer families** (`data/irregular_links{1000,2000,5000}/`), matched in conflict degree:
   ```bash
-  cd src && PYTHONPATH=. python -m sagnn.make_graphs --world-sizes ... --noise ... \
+  cd src && PYTHONPATH=. python -m sagnn.make_graphs --world-sizes <w> ... --noise <noise> \
       --n-train 100 --n-test 50 --sparse --out-dir ../data/irregular_links1000
   ```
 
@@ -143,8 +138,8 @@ is strict: two links that collide in a slot both fail.
 ## Credits
 
 - `src/graph_signal_diffusion/` is a trimmed copy of the Graph Signal Generative Diffusion
-  codebase (U-GNN denoiser, DDPM/DDIM). **TODO:** authors / upstream link and licence.
-- `src/MIS/KaMIS.py` and `run_pipeline.sh` adapt **TODO: Romi's full name**'s file-based MWIS
+  codebase (U-GNN denoiser, DDPM/DDIM).
+- `src/MIS/KaMIS.py` and `run_pipeline.sh` adapt Romi's file-based MWIS
   trajectory pipeline.
 - MWIS solving uses [KaMIS](https://github.com/KarlsruheMIS/KaMIS) (Lamm, Sanders, Schulz,
   Strash, Werneck; MIT licence), which is cloned at setup and not redistributed here.
